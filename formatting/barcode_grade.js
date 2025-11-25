@@ -9,7 +9,7 @@ function onResult(decodeResults, readerProperties, output) {
     resultArray = [];
     for (let i = 0; i < decodeResults.length; i++) {
         if (decodeResults[i].decoded) {
-            resultArray.push(decodeResults[i].content + DELIM + decodeResults[i].trucheck.overall.gradeLetter);
+            resultArray.push(decodeResults[i].content + DELIM + decodeResults[i].metrics.overallGrade.grade);
         }
     }
     output.content = resultArray.join(CRLF) + CRLF;
