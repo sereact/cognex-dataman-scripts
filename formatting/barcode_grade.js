@@ -4,9 +4,13 @@ const CRLF = '\r\n';
 
 function onResult(decodeResults, readerProperties, output) {
 
-    const resultArray = decodeResults
-        .filter(res => res.decoded)
-        .map(res => `${res.content}${DELIM}${res.trucheck.overall.gradeLetter}`);
+    resultArray = [];
 
-    output.content = resultArray.length > 0 ? resultArray.join(CRLF) + CRLF : "";
+    resultArray = [];
+    for (let i = 0; i < decodeResults.length; i++) {
+        if (decodeResults[i].decoded) {
+            resultArray.push(decodeResults[i].content + DELIM + decodeResults[i].trucheck.overall.gradeLetter);
+        }
+    }
+    output.content = resultArray.join(CRLF) + CRLF;
 }
