@@ -6,7 +6,7 @@ function onResult(decodeResults, readerProperties, output) {
 
     const resultArray = decodeResults
         .filter(res => res.decoded)
-        .map(res => `${res.content}${DELIM}${res.trucheck.grade}`);
+        .map(res => `${res.content}${DELIM}${res.trucheck.overall.gradeLetter}`);
 
     output.content = resultArray.length > 0 ? resultArray.join(CRLF) + CRLF : "";
 }
